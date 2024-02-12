@@ -1,0 +1,311 @@
+/*
+ * GPIO_MemoryMap.h
+ *
+ *  Created on: Feb 2, 2024
+ *      Author: omar
+ */
+#include "STD_TYPES.h"
+
+#ifndef GPIO_MEMORYMAP_H_
+#define GPIO_MEMORYMAP_H_
+
+/***************************************************************/
+//GPIO Map-ing
+
+#define GPIO_RC_Reg    (*((volatile u32 *)0x400FE608))
+#define GPIO_PR_Reg    (*((volatile u32 *)0x400FEA08))
+
+// Group A
+
+#define GPIO_PORTA_DATA_REG       (*((volatile u32 *)0x400043FC))
+#define GPIO_PORTA_DIR_REG        (*((volatile u32 *)0x40004400))
+#define GPIO_PORTA_AFSEL_REG      (*((volatile u32 *)0x40004420))
+#define GPIO_PORTA_PUR_REG        (*((volatile u32 *)0x40004510))
+#define GPIO_PORTA_PDR_REG        (*((volatile u32 *)0x40004514))
+#define GPIO_PORTA_DEN_REG        (*((volatile u32 *)0x4000451C))
+#define GPIO_PORTA_LOCK_REG       (*((volatile u32 *)0x40004520))
+#define GPIO_PORTA_CR_REG         (*((volatile u32 *)0x40004524))
+#define GPIO_PORTA_AMSEL_REG      (*((volatile u32 *)0x40004528))
+#define GPIO_PORTA_PCTL_REG       (*((volatile u32 *)0x4000452C))
+
+// Group B
+
+#define GPIO_PORTB_DATA_REG       (*((volatile u32 *)0x400053FC))
+#define GPIO_PORTB_DIR_REG        (*((volatile u32 *)0x40005400))
+#define GPIO_PORTB_AFSEL_REG      (*((volatile u32 *)0x40005420))
+#define GPIO_PORTB_PUR_REG        (*((volatile u32 *)0x40005510))
+#define GPIO_PORTB_PDR_REG        (*((volatile u32 *)0x40005514))
+#define GPIO_PORTB_DEN_REG        (*((volatile u32 *)0x4000551C))
+#define GPIO_PORTB_LOCK_REG       (*((volatile u32 *)0x40005520))
+#define GPIO_PORTB_CR_REG         (*((volatile u32 *)0x40005524))
+#define GPIO_PORTB_AMSEL_REG      (*((volatile u32 *)0x40005528))
+#define GPIO_PORTB_PCTL_REG       (*((volatile u32 *)0x4000552C))
+
+// Group C
+
+#define GPIO_PORTC_DATA_REG       (*((volatile u32 *)0x400063FC))
+#define GPIO_PORTC_DIR_REG        (*((volatile u32 *)0x40006400))
+#define GPIO_PORTC_AFSEL_REG      (*((volatile u32 *)0x40006420))
+#define GPIO_PORTC_PUR_REG        (*((volatile u32 *)0x40006510))
+#define GPIO_PORTC_PDR_REG        (*((volatile u32 *)0x40006514))
+#define GPIO_PORTC_DEN_REG        (*((volatile u32 *)0x4000651C))
+#define GPIO_PORTC_LOCK_REG       (*((volatile u32 *)0x40006520))
+#define GPIO_PORTC_CR_REG         (*((volatile u32 *)0x40006524))
+#define GPIO_PORTC_AMSEL_REG      (*((volatile u32 *)0x40006528))
+#define GPIO_PORTC_PCTL_REG       (*((volatile u32 *)0x4000652C))
+
+// Group D
+
+#define GPIO_PORTD_DATA_REG       (*((volatile u32 *)0x400073FC))
+#define GPIO_PORTD_DIR_REG        (*((volatile u32 *)0x40007400))
+#define GPIO_PORTD_AFSEL_REG      (*((volatile u32 *)0x40007420))
+#define GPIO_PORTD_PUR_REG        (*((volatile u32 *)0x40007510))
+#define GPIO_PORTD_PDR_REG        (*((volatile u32 *)0x40007514))
+#define GPIO_PORTD_DEN_REG        (*((volatile u32 *)0x4000751C))
+#define GPIO_PORTD_LOCK_REG       (*((volatile u32 *)0x40007520))
+#define GPIO_PORTD_CR_REG         (*((volatile u32 *)0x40007524))
+#define GPIO_PORTD_AMSEL_REG      (*((volatile u32 *)0x40007528))
+#define GPIO_PORTD_PCTL_REG       (*((volatile u32 *)0x4000752C))
+
+// Group E
+
+#define GPIO_PORTE_DATA_REG       (*((volatile u32 *)0x400243FC))
+#define GPIO_PORTE_DIR_REG        (*((volatile u32 *)0x40024400))
+#define GPIO_PORTE_AFSEL_REG      (*((volatile u32 *)0x40024420))
+#define GPIO_PORTE_PUR_REG        (*((volatile u32 *)0x40024510))
+#define GPIO_PORTE_PDR_REG        (*((volatile u32 *)0x40024514))
+#define GPIO_PORTE_DEN_REG        (*((volatile u32 *)0x4002451C))
+#define GPIO_PORTE_LOCK_REG       (*((volatile u32 *)0x40024520))
+#define GPIO_PORTE_CR_REG         (*((volatile u32 *)0x40024524))
+#define GPIO_PORTE_AMSEL_REG      (*((volatile u32 *)0x40024528))
+#define GPIO_PORTE_PCTL_REG       (*((volatile u32 *)0x4002452C))
+
+// Group F
+
+#define GPIO_PORTF_DATA_REG       (*((volatile u32 *)0x400253FC))
+#define GPIO_PORTF_DIR_REG        (*((volatile u32 *)0x40025400))
+#define GPIO_PORTF_AFSEL_REG      (*((volatile u32 *)0x40025420))
+#define GPIO_PORTF_PUR_REG        (*((volatile u32 *)0x40025510))
+#define GPIO_PORTF_PDR_REG        (*((volatile u32 *)0x40025514))
+#define GPIO_PORTF_DEN_REG        (*((volatile u32 *)0x4002551C))
+#define GPIO_PORTF_LOCK_REG       (*((volatile u32 *)0x40025520))
+#define GPIO_PORTF_CR_REG         (*((volatile u32 *)0x40025524))
+#define GPIO_PORTF_AMSEL_REG      (*((volatile u32 *)0x40025528))
+#define GPIO_PORTF_PCTL_REG       (*((volatile u32 *)0x4002552C))
+
+// PINS GPIO Specific PINS
+
+// PORTA
+
+#define PA0         (*((volatile u32 *) (GPIO_PORTA_BASE_Address + GPIO_DATA_offset + PIN0)))
+#define PA1         (*((volatile u32 *) (GPIO_PORTA_BASE_Address + GPIO_DATA_offset + PIN1)))
+#define PA2         (*((volatile u32 *) (GPIO_PORTA_BASE_Address + GPIO_DATA_offset + PIN2)))
+#define PA3         (*((volatile u32 *) (GPIO_PORTA_BASE_Address + GPIO_DATA_offset + PIN3)))
+#define PA4         (*((volatile u32 *) (GPIO_PORTA_BASE_Address + GPIO_DATA_offset + PIN4)))
+#define PA5         (*((volatile u32 *) (GPIO_PORTA_BASE_Address + GPIO_DATA_offset + PIN5)))
+#define PA6         (*((volatile u32 *) (GPIO_PORTA_BASE_Address + GPIO_DATA_offset + PIN6)))
+#define PA7         (*((volatile u32 *) (GPIO_PORTA_BASE_Address + GPIO_DATA_offset + PIN7)))
+
+//PORTB
+
+#define PB0         (*((volatile u32 *) (GPIO_PORTB_BASE_Address + GPIO_DATA_offset + PIN0)))
+#define PB1         (*((volatile u32 *) (GPIO_PORTB_BASE_Address + GPIO_DATA_offset + PIN1)))
+#define PB2         (*((volatile u32 *) (GPIO_PORTB_BASE_Address + GPIO_DATA_offset + PIN2)))
+#define PB3         (*((volatile u32 *) (GPIO_PORTB_BASE_Address + GPIO_DATA_offset + PIN3)))
+#define PB4         (*((volatile u32 *) (GPIO_PORTB_BASE_Address + GPIO_DATA_offset + PIN4)))
+#define PB5         (*((volatile u32 *) (GPIO_PORTB_BASE_Address + GPIO_DATA_offset + PIN5)))
+#define PB6         (*((volatile u32 *) (GPIO_PORTB_BASE_Address + GPIO_DATA_offset + PIN6)))
+#define PB7         (*((volatile u32 *) (GPIO_PORTB_BASE_Address + GPIO_DATA_offset + PIN7)))
+
+// PORTC
+
+#define PC0         (*((volatile u32 *) (GPIO_PORTC_BASE_Address + GPIO_DATA_offset + PIN0)))
+#define PC1         (*((volatile u32 *) (GPIO_PORTC_BASE_Address + GPIO_DATA_offset + PIN1)))
+#define PC2         (*((volatile u32 *) (GPIO_PORTC_BASE_Address + GPIO_DATA_offset + PIN2)))
+#define PC3         (*((volatile u32 *) (GPIO_PORTC_BASE_Address + GPIO_DATA_offset + PIN3)))
+#define PC4         (*((volatile u32 *) (GPIO_PORTC_BASE_Address + GPIO_DATA_offset + PIN4)))
+#define PC5         (*((volatile u32 *) (GPIO_PORTC_BASE_Address + GPIO_DATA_offset + PIN5)))
+#define PC6         (*((volatile u32 *) (GPIO_PORTC_BASE_Address + GPIO_DATA_offset + PIN6)))
+#define PC7         (*((volatile u32 *) (GPIO_PORTC_BASE_Address + GPIO_DATA_offset + PIN7)))
+
+// PORTD
+
+#define PD0         (*((volatile u32 *) (GPIO_PORTD_BASE_Address + GPIO_DATA_offset + PIN0)))
+#define PD1         (*((volatile u32 *) (GPIO_PORTD_BASE_Address + GPIO_DATA_offset + PIN1)))
+#define PD2         (*((volatile u32 *) (GPIO_PORTD_BASE_Address + GPIO_DATA_offset + PIN2)))
+#define PD3         (*((volatile u32 *) (GPIO_PORTD_BASE_Address + GPIO_DATA_offset + PIN3)))
+#define PD4         (*((volatile u32 *) (GPIO_PORTD_BASE_Address + GPIO_DATA_offset + PIN4)))
+#define PD5         (*((volatile u32 *) (GPIO_PORTD_BASE_Address + GPIO_DATA_offset + PIN5)))
+#define PD6         (*((volatile u32 *) (GPIO_PORTD_BASE_Address + GPIO_DATA_offset + PIN6)))
+#define PD7         (*((volatile u32 *) (GPIO_PORTD_BASE_Address + GPIO_DATA_offset + PIN7)))
+
+// PORTE
+
+#define PE0         (*((volatile u32 *) (GPIO_PORTE_BASE_Address + GPIO_DATA_offset + PIN0)))
+#define PE1         (*((volatile u32 *) (GPIO_PORTE_BASE_Address + GPIO_DATA_offset + PIN1)))
+#define PE2         (*((volatile u32 *) (GPIO_PORTE_BASE_Address + GPIO_DATA_offset + PIN2)))
+#define PE3         (*((volatile u32 *) (GPIO_PORTE_BASE_Address + GPIO_DATA_offset + PIN3)))
+#define PE4         (*((volatile u32 *) (GPIO_PORTE_BASE_Address + GPIO_DATA_offset + PIN4)))
+#define PE5         (*((volatile u32 *) (GPIO_PORTE_BASE_Address + GPIO_DATA_offset + PIN5)))
+#define PE6         (*((volatile u32 *) (GPIO_PORTE_BASE_Address + GPIO_DATA_offset + PIN6)))
+#define PE7         (*((volatile u32 *) (GPIO_PORTE_BASE_Address + GPIO_DATA_offset + PIN7)))
+
+//PORTF
+
+#define PF0         (*((volatile u32 *) (GPIO_PORTF_BASE_Address + GPIO_DATA_offset + PIN0)))
+#define PF1         (*((volatile u32 *) (GPIO_PORTF_BASE_Address + GPIO_DATA_offset + PIN1)))
+#define PF2         (*((volatile u32 *) (GPIO_PORTF_BASE_Address + GPIO_DATA_offset + PIN2)))
+#define PF3         (*((volatile u32 *) (GPIO_PORTF_BASE_Address + GPIO_DATA_offset + PIN3)))
+#define PF4         (*((volatile u32 *) (GPIO_PORTF_BASE_Address + GPIO_DATA_offset + PIN4)))
+#define PF5         (*((volatile u32 *) (GPIO_PORTF_BASE_Address + GPIO_DATA_offset + PIN5)))
+#define PF6         (*((volatile u32 *) (GPIO_PORTF_BASE_Address + GPIO_DATA_offset + PIN6)))
+#define PF7         (*((volatile u32 *) (GPIO_PORTF_BASE_Address + GPIO_DATA_offset + PIN7)))
+
+
+/******************************Sys-tick Timer Registers***********************************************/
+#define SYSTICK_CTRL_REG          (*((volatile u32 *)0xE000E010))
+#define SYSTICK_RELOAD_REG        (*((volatile u32 *)0xE000E014))
+#define SYSTICK_CURRENT_REG       (*((volatile u32 *)0xE000E018))
+
+/*****************************************************************************
+System Control Registers
+*****************************************************************************/
+#define SYSCTL_DID0_REG           (*((volatile u32 *)0x400FE000))
+#define SYSCTL_DID1_REG           (*((volatile u32 *)0x400FE004))
+#define SYSCTL_DC0_REG            (*((volatile u32 *)0x400FE008))
+#define SYSCTL_DC1_REG            (*((volatile u32 *)0x400FE010))
+#define SYSCTL_DC2_REG            (*((volatile u32 *)0x400FE014))
+#define SYSCTL_DC3_REG            (*((volatile u32 *)0x400FE018))
+#define SYSCTL_DC4_REG            (*((volatile u32 *)0x400FE01C))
+#define SYSCTL_DC5_REG            (*((volatile u32 *)0x400FE020))
+#define SYSCTL_DC6_REG            (*((volatile u32 *)0x400FE024))
+#define SYSCTL_DC7_REG            (*((volatile u32 *)0x400FE028))
+#define SYSCTL_DC8_REG            (*((volatile u32 *)0x400FE02C))
+#define SYSCTL_PBORCTL_REG        (*((volatile u32 *)0x400FE030))
+#define SYSCTL_SRCR0_REG          (*((volatile u32 *)0x400FE040))
+#define SYSCTL_SRCR1_REG          (*((volatile u32 *)0x400FE044))
+#define SYSCTL_SRCR2_REG          (*((volatile u32 *)0x400FE048))
+#define SYSCTL_RIS_REG            (*((volatile u32 *)0x400FE050))
+#define SYSCTL_IMC_REG            (*((volatile u32 *)0x400FE054))
+#define SYSCTL_MISC_REG           (*((volatile u32 *)0x400FE058))
+#define SYSCTL_RESC_REG           (*((volatile u32 *)0x400FE05C))
+#define SYSCTL_RCC_REG            (*((volatile u32 *)0x400FE060))
+#define SYSCTL_GPIOHBCTL_REG      (*((volatile u32 *)0x400FE06C))
+#define SYSCTL_RCC2_REG           (*((volatile u32 *)0x400FE070))
+#define SYSCTL_MOSCCTL_REG        (*((volatile u32 *)0x400FE07C))
+#define SYSCTL_RCGC0_REG          (*((volatile u32 *)0x400FE100))
+#define SYSCTL_RCGC1_REG          (*((volatile u32 *)0x400FE104))
+#define SYSCTL_RCGC2_REG          (*((volatile u32 *)0x400FE108))
+#define SYSCTL_SCGC0_REG          (*((volatile u32 *)0x400FE110))
+#define SYSCTL_SCGC1_REG          (*((volatile u32 *)0x400FE114))
+#define SYSCTL_SCGC2_REG          (*((volatile u32 *)0x400FE118))
+#define SYSCTL_DCGC0_REG          (*((volatile u32 *)0x400FE120))
+#define SYSCTL_DCGC1_REG          (*((volatile u32 *)0x400FE124))
+#define SYSCTL_DCGC2_REG          (*((volatile u32 *)0x400FE128))
+#define SYSCTL_DSLPCLKCFG_REG     (*((volatile u32 *)0x400FE144))
+#define SYSCTL_SYSPROP_REG        (*((volatile u32 *)0x400FE14C))
+#define SYSCTL_PIOSCCAL_REG       (*((volatile u32 *)0x400FE150))
+#define SYSCTL_PIOSCSTAT_REG      (*((volatile u32 *)0x400FE154))
+#define SYSCTL_PLLFREQ0_REG       (*((volatile u32 *)0x400FE160))
+#define SYSCTL_PLLFREQ1_REG       (*((volatile u32 *)0x400FE164))
+#define SYSCTL_PLLSTAT_REG        (*((volatile u32 *)0x400FE168))
+#define SYSCTL_DC9_REG            (*((volatile u32 *)0x400FE190))
+#define SYSCTL_NVMSTAT_REG        (*((volatile u32 *)0x400FE1A0))
+#define SYSCTL_PPWD_REG           (*((volatile u32 *)0x400FE300))
+#define SYSCTL_PPTIMER_REG        (*((volatile u32 *)0x400FE304))
+#define SYSCTL_PPGPIO_REG         (*((volatile u32 *)0x400FE308))
+#define SYSCTL_PPDMA_REG          (*((volatile u32 *)0x400FE30C))
+#define SYSCTL_PPHIB_REG          (*((volatile u32 *)0x400FE314))
+#define SYSCTL_PPUART_REG         (*((volatile u32 *)0x400FE318))
+#define SYSCTL_PPSSI_REG          (*((volatile u32 *)0x400FE31C))
+#define SYSCTL_PPI2C_REG          (*((volatile u32 *)0x400FE320))
+#define SYSCTL_PPUSB_REG          (*((volatile u32 *)0x400FE328))
+#define SYSCTL_PPCAN_REG          (*((volatile u32 *)0x400FE334))
+#define SYSCTL_PPADC_REG          (*((volatile u32 *)0x400FE338))
+#define SYSCTL_PPACMP_REG         (*((volatile u32 *)0x400FE33C))
+#define SYSCTL_PPPWM_REG          (*((volatile u32 *)0x400FE340))
+#define SYSCTL_PPQEI_REG          (*((volatile u32 *)0x400FE344))
+#define SYSCTL_PPEEPROM_REG       (*((volatile u32 *)0x400FE358))
+#define SYSCTL_PPWTIMER_REG       (*((volatile u32 *)0x400FE35C))
+#define SYSCTL_SRWD_REG           (*((volatile u32 *)0x400FE500))
+#define SYSCTL_SRTIMER_REG        (*((volatile u32 *)0x400FE504))
+#define SYSCTL_SRGPIO_REG         (*((volatile u32 *)0x400FE508))
+#define SYSCTL_SRDMA_REG          (*((volatile u32 *)0x400FE50C))
+#define SYSCTL_SRHIB_REG          (*((volatile u32 *)0x400FE514))
+#define SYSCTL_SRUART_REG         (*((volatile u32 *)0x400FE518))
+#define SYSCTL_SRSSI_REG          (*((volatile u32 *)0x400FE51C))
+#define SYSCTL_SRI2C_REG          (*((volatile u32 *)0x400FE520))
+#define SYSCTL_SRUSB_REG          (*((volatile u32 *)0x400FE528))
+#define SYSCTL_SRCAN_REG          (*((volatile u32 *)0x400FE534))
+#define SYSCTL_SRADC_REG          (*((volatile u32 *)0x400FE538))
+#define SYSCTL_SRACMP_REG         (*((volatile u32 *)0x400FE53C))
+#define SYSCTL_SRPWM_REG          (*((volatile u32 *)0x400FE540))
+#define SYSCTL_SRQEI_REG          (*((volatile u32 *)0x400FE544))
+#define SYSCTL_SREEPROM_REG       (*((volatile u32 *)0x400FE558))
+#define SYSCTL_SRWTIMER_REG       (*((volatile u32 *)0x400FE55C))
+#define SYSCTL_RCGCWD_REG         (*((volatile u32 *)0x400FE600))
+#define SYSCTL_RCGCTIMER_REG      (*((volatile u32 *)0x400FE604))
+#define SYSCTL_RCGCGPIO_REG       (*((volatile u32 *)0x400FE608))
+#define SYSCTL_RCGCDMA_REG        (*((volatile u32 *)0x400FE60C))
+#define SYSCTL_RCGCHIB_REG        (*((volatile u32 *)0x400FE614))
+#define SYSCTL_RCGCUART_REG       (*((volatile u32 *)0x400FE618))
+#define SYSCTL_RCGCSSI_REG        (*((volatile u32 *)0x400FE61C))
+#define SYSCTL_RCGCI2C_REG        (*((volatile u32 *)0x400FE620))
+#define SYSCTL_RCGCUSB_REG        (*((volatile u32 *)0x400FE628))
+#define SYSCTL_RCGCCAN_REG        (*((volatile u32 *)0x400FE634))
+#define SYSCTL_RCGCADC_REG        (*((volatile u32 *)0x400FE638))
+#define SYSCTL_RCGCACMP_REG       (*((volatile u32 *)0x400FE63C))
+#define SYSCTL_RCGCPWM_REG        (*((volatile u32 *)0x400FE640))
+#define SYSCTL_RCGCQEI_REG        (*((volatile u32 *)0x400FE644))
+#define SYSCTL_RCGCEEPROM_REG     (*((volatile u32 *)0x400FE658))
+#define SYSCTL_RCGCWTIMER_REG     (*((volatile u32 *)0x400FE65C))
+#define SYSCTL_SCGCWD_REG         (*((volatile u32 *)0x400FE700))
+#define SYSCTL_SCGCTIMER_REG      (*((volatile u32 *)0x400FE704))
+#define SYSCTL_SCGCGPIO_REG       (*((volatile u32 *)0x400FE708))
+#define SYSCTL_SCGCDMA_REG        (*((volatile u32 *)0x400FE70C))
+#define SYSCTL_SCGCHIB_REG        (*((volatile u32 *)0x400FE714))
+#define SYSCTL_SCGCUART_REG       (*((volatile u32 *)0x400FE718))
+#define SYSCTL_SCGCSSI_REG        (*((volatile u32 *)0x400FE71C))
+#define SYSCTL_SCGCI2C_REG        (*((volatile u32 *)0x400FE720))
+#define SYSCTL_SCGCUSB_REG        (*((volatile u32 *)0x400FE728))
+#define SYSCTL_SCGCCAN_REG        (*((volatile u32 *)0x400FE734))
+#define SYSCTL_SCGCADC_REG        (*((volatile u32 *)0x400FE738))
+#define SYSCTL_SCGCACMP_REG       (*((volatile u32 *)0x400FE73C))
+#define SYSCTL_SCGCPWM_REG        (*((volatile u32 *)0x400FE740))
+#define SYSCTL_SCGCQEI_REG        (*((volatile u32 *)0x400FE744))
+#define SYSCTL_SCGCEEPROM_REG     (*((volatile u32 *)0x400FE758))
+#define SYSCTL_SCGCWTIMER_REG     (*((volatile u32 *)0x400FE75C))
+#define SYSCTL_DCGCWD_REG         (*((volatile u32 *)0x400FE800))
+#define SYSCTL_DCGCTIMER_REG      (*((volatile u32 *)0x400FE804))
+#define SYSCTL_DCGCGPIO_REG       (*((volatile u32 *)0x400FE808))
+#define SYSCTL_DCGCDMA_REG        (*((volatile u32 *)0x400FE80C))
+#define SYSCTL_DCGCHIB_REG        (*((volatile u32 *)0x400FE814))
+#define SYSCTL_DCGCUART_REG       (*((volatile u32 *)0x400FE818))
+#define SYSCTL_DCGCSSI_REG        (*((volatile u32 *)0x400FE81C))
+#define SYSCTL_DCGCI2C_REG        (*((volatile u32 *)0x400FE820))
+#define SYSCTL_DCGCUSB_REG        (*((volatile u32 *)0x400FE828))
+#define SYSCTL_DCGCCAN_REG        (*((volatile u32 *)0x400FE834))
+#define SYSCTL_DCGCADC_REG        (*((volatile u32 *)0x400FE838))
+#define SYSCTL_DCGCACMP_REG       (*((volatile u32 *)0x400FE83C))
+#define SYSCTL_DCGCPWM_REG        (*((volatile u32 *)0x400FE840))
+#define SYSCTL_DCGCQEI_REG        (*((volatile u32 *)0x400FE844))
+#define SYSCTL_DCGCEEPROM_REG     (*((volatile u32 *)0x400FE858))
+#define SYSCTL_DCGCWTIMER_REG     (*((volatile u32 *)0x400FE85C))
+#define SYSCTL_PRWD_REG           (*((volatile u32 *)0x400FEA00))
+#define SYSCTL_PRTIMER_REG        (*((volatile u32 *)0x400FEA04))
+#define SYSCTL_PRGPIO_REG         (*((volatile u32 *)0x400FEA08))
+#define SYSCTL_PRDMA_REG          (*((volatile u32 *)0x400FEA0C))
+#define SYSCTL_PRHIB_REG          (*((volatile u32 *)0x400FEA14))
+#define SYSCTL_PRUART_REG         (*((volatile u32 *)0x400FEA18))
+#define SYSCTL_PRSSI_REG          (*((volatile u32 *)0x400FEA1C))
+#define SYSCTL_PRI2C_REG          (*((volatile u32 *)0x400FEA20))
+#define SYSCTL_PRUSB_REG          (*((volatile u32 *)0x400FEA28))
+#define SYSCTL_PRCAN_REG          (*((volatile u32 *)0x400FEA34))
+#define SYSCTL_PRADC_REG          (*((volatile u32 *)0x400FEA38))
+#define SYSCTL_PRACMP_REG         (*((volatile u32 *)0x400FEA3C))
+#define SYSCTL_PRPWM_REG          (*((volatile u32 *)0x400FEA40))
+#define SYSCTL_PRQEI_REG          (*((volatile u32 *)0x400FEA44))
+#define SYSCTL_PREEPROM_REG       (*((volatile u32 *)0x400FEA58))
+#define SYSCTL_PRWTIMER_REG       (*((volatile u32 *)0x400FEA5C))
+
+#endif /* GPIO_MEMORYMAP_H_ */
