@@ -1,0 +1,184 @@
+
+
+/**
+ * main.c
+ */
+
+
+#include "GPIO_Macros.h"
+#include "GPIO_MemoryMap.h"
+#include "STD_TYPES.h"
+
+#define SW1       PF0
+#define RED_LED   PF1
+#define BULE_LED  PF2
+#define GREEN_LED PF3
+/**************************************/
+void SW1_Init (void );
+void GPIO_Interrput_Init (void );
+void GPIOF_Handler (void) ;
+void LED_Init(void );
+void Systick_Init (void );
+void BusFault_Init (void);
+void BusFault_Handler (void);
+void Switch_To_Unprivileged(void);
+void SVC_Handler (void ) ;
+void SVC_Init  (void);
+/**************************************/ 
+void SVC_Handler (void ) {
+    u8 SVC_Num = 0;              /* First local variable stored in stack */
+    __asm(" LDR R3, [SP, #32] ");   /* Extract the stacked PC register value which vectoring to this handler and add it to R3 */
+    __asm(" LDRB R3, [R3, #-2] ");  /* Extract the SVC number value, it is exist in the first byte of address PC-2 */
+    __asm(" STRB R3, [ SP ,0x07] ");        /* Load the R3 value to SVC_Num variable as SP is pointing to SVC_Num location in the stack memory */
+	
+    switch(SVC_Num)
+    {
+    case 1:
+        __asm(" MOV R3, #0 ");      /* Load the R3 register with value 0 */
+        __asm(" MSR CONTROL, R3 "); /* Clear the PRIV Bit(Bit 0) ... This will switch to Privileged access level */
+        break;
+    case 0:
+    case 2:
+    case 3:
+    case 255:
+        break;
+    default:
+        break;
+    }
+}
+void BusFault_Handler (void) {
+	
+	while (1){
+		
+	}
+	
+}
+void BusFault_Init (void) {
+	
+	/* Set Prioity Level*/ 
+	
+	NVIC_SYSTEM_PRI1_REG = (NVIC_SYSTEM_PRI1_REG & BusFault_Mask) | (6 << 13);
+	NVIC_SYSTEM_SYSHNDCTRL |= (1 << 17);
+	
+	
+}
+void SVC_Init  (void){
+	
+	NVIC_SYSTEM_PRI2_REG = (NVIC_SYSTEM_PRI2_REG & 0x1FFFFFFF) | (4 << 29);
+}
+
+void GPIOF_Handler (void) {
+	
+	RED_LED ^= 0xFF;
+	GPIO_PORTF_ICR_REG |= (1<<0);
+}
+ 
+void Switch_To_Unprivileged(void)
+{
+    __asm(" MOV R0, #1 ");      /* Set the R0 register value to 1 */
+    __asm(" MSR CONTROL, R0 "); /* Set the PRIV Bit(Bit 0) to 1 ... This will switch to Unprivileged access level */
+}
+
+void SW1_Init (void ){
+
+    /*******************************************************/
+    // Configure it as input pin
+            /*First Unlock Register GPIOLOCK*/
+            GPIO_PORTF_LOCK_REG = LOCK_REG_MASK;
+            /*GPIOCR - allow writing commits */
+            GPIO_PORTF_CR_REG |= (1<<0);
+            //GPIO Port Ctrl To choose the Port mode GPIOPCTL
+            GPIO_PORTF_PCTL_REG  &= 0xFFFFFFF0;                   /*For PF0*/
+            // GPIO Alternate Function GPIOAFSEL for PIN
+            GPIO_PORTF_AFSEL_REG &= ~(1<<0);                      /*For PF0*/
+            // GPIOAMSEL Analog disable
+            GPIO_PORTF_AMSEL_REG &= ~(1<<0);
+            //GPIODEN Digital Enable
+            GPIO_PORTF_DEN_REG   |= (1<<0);
+            //pull-up Enable
+            GPIO_PORTF_PUR_REG   |= (1<<0);
+            //Choose the direction
+            GPIO_PORTF_DIR_REG   &= ~(1<<0);
+    /***************************************************************/
+
+}
+
+
+void GPIO_Interrput_Init (void ){
+
+   //Clear GPIOIS sense mode
+    GPIO_PORTF_IS_REG &= ~(1<<0);
+    //Clear GPIOIBE
+    GPIO_PORTF_IBE_REG &= ~(1<<0);
+    //clear GPIOIEV GPIO Interrupt event
+    GPIO_PORTF_IEV_REG &= ~(1<<0);
+    //W 1 to GPIOICR To clear the corresponding
+    GPIO_PORTF_ICR_REG |= (1<<0);
+    //Set priority Interrupt Register (PRIN)
+    NVIC_PRI7_REG = (NVIC_PRI7_REG & GPIO_PORTF_PRIORITY_MASK) | (GPIO_PORTF_INTERRUPT_PRIORITY << 21);
+    //GPIO Interrupt Mask GPIOIM
+    GPIO_PORTF_IM_REG |= (1<<0);
+    // Interrupt port Enable
+    NVIC_EN0_REG = 0x40000000;
+
+}
+
+void LED_Init(void ) {
+
+    //GPIO Port Ctrl To choose the Port mode GPIOPCTL
+    GPIO_PORTF_PCTL_REG  &= 0xFFFF000F;
+    GPIO_PORTF_PCTL_REG  &= 0xFFFFFFF0;                   /*For PF0*/
+    // GPIO Alternate Function GPIOAFSEL for PIN
+    GPIO_PORTF_AFSEL_REG &= ~(1<<1);                      /*For PF0*/
+    GPIO_PORTF_AFSEL_REG &= ~(1<<2);
+    GPIO_PORTF_AFSEL_REG &= ~(1<<3);
+    // GPIOAMSEL Analog disable
+    GPIO_PORTF_AMSEL_REG &= ~(1<<1);
+    GPIO_PORTF_AMSEL_REG &= ~(1<<2);
+    GPIO_PORTF_AMSEL_REG &= ~(1<<3);
+    //GPIODEN Digital Enable
+    GPIO_PORTF_DEN_REG   |= (1<<1);
+    GPIO_PORTF_DEN_REG   |= (1<<2);
+    GPIO_PORTF_DEN_REG   |= (1<<3);
+    //pull-up Enable
+    GPIO_PORTF_PUR_REG   |= (1<<1);
+    GPIO_PORTF_PUR_REG   |= (1<<2);
+    GPIO_PORTF_PUR_REG   |= (1<<3);
+    //Choose the direction
+    GPIO_PORTF_DIR_REG   |= (1<<1);
+    GPIO_PORTF_DIR_REG   |= (1<<2);
+    GPIO_PORTF_DIR_REG   |= (1<<3);
+
+}
+
+int main(void)
+{
+
+    // Send CLK to GPIO
+ SYSCTL_RCGCGPIO_REG |= 0x20;
+    // wait until the the system is ready
+	while (!(SYSCTL_PRGPIO_REG & (1<<5)));
+	SVC_Init ();
+	Enable_Faults() ;
+	Enable_Exceptions() ;
+	BusFault_Init();
+  SW1_Init();
+	
+  LED_Init();
+  Switch_To_Unprivileged();	
+	
+	
+    
+	Trigger_SVC_Exception();
+	
+
+	GPIO_Interrput_Init();
+    while (1){
+	
+			
+			
+				
+		}		
+	return 0;
+
+}

@@ -1,0 +1,142 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.38.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: omar ahmed, Nile university, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.38.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.19
+Assembler:       Armasm.exe V6.19
+Linker/Locator:  ArmLink.exe V6.19
+Library Manager: ArmAr.exe V6.19
+Hex Converter:   FromElf.exe V6.19
+CPU DLL:         SARMCM3.DLL V5.38.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      UL2CM3.DLL V1.164.8.0
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+D:\Arm Workspace\Keil_Workspace\SVC\Src.uvprojx
+Project File Date:  02/17/2024
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'Target 1'
+main.c(8): warning: In file included from...
+./GPIO_Macros.h(7): warning: In file included from...
+./STD_TYPES.h(37): warning: 'long long' is an extension when C99 mode is not enabled [-Wlong-long]
+typedef unsigned long long    u64;         /*       0 .. 18446744073709551615  */
+                 ^
+./STD_TYPES.h(38): warning: 'long long' is an extension when C99 mode is not enabled [-Wlong-long]
+typedef signed long long      s64;         /* -9223372036854775808 .. 9223372036854775807 */
+               ^
+main.c(8): warning: In file included from...
+./GPIO_Macros.h(12): warning: // comments are not allowed in this language [-Wcomment]
+// GPIO Macros
+^
+./GPIO_Macros.h(65): warning: commas at the end of enumerator lists are a C99-specific feature [-Wc99-extensions]
+    GPIO_PIN7,
+             ^
+main.c(9): warning: In file included from...
+./GPIO_MemoryMap.h(13): warning: // comments are not allowed in this language [-Wcomment]
+//GPIO Map-ing
+^
+main.c(49): warning: function 'BusFault_Handler' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+void BusFault_Handler (void) {
+                             ^
+main.c(67): warning: signed shift result (0x80000000) sets the sign bit of the shift expression's type ('int') and becomes negative [-Wshift-sign-overflow]
+        NVIC_SYSTEM_PRI2_REG = (NVIC_SYSTEM_PRI2_REG & 0x1FFFFFFF) | (4 << 29);
+                                                                      ~ ^  ~~
+main.c(67): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+        NVIC_SYSTEM_PRI2_REG = (NVIC_SYSTEM_PRI2_REG & 0x1FFFFFFF) | (4 << 29);
+                                                                   ~  ~~^~~~~
+main.c(71): warning: unused variable 'Gpio' [-Wunused-variable]
+        u8 Gpio = 0; 
+           ^
+main.c(85): warning: // comments are not allowed in this language [-Wcomment]
+    // Configure it as input pin
+    ^
+main.c(93): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            GPIO_PORTF_AFSEL_REG &= ~(1<<0);                      /*For PF0*/
+                                 ~~ ^~~~~~~
+main.c(95): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            GPIO_PORTF_AMSEL_REG &= ~(1<<0);
+                                 ~~ ^~~~~~~
+main.c(101): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            GPIO_PORTF_DIR_REG   &= ~(1<<0);
+                                 ~~ ^~~~~~~
+main.c(110): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    GPIO_PORTF_IS_REG &= ~(1<<0);
+                      ~~ ^~~~~~~
+main.c(112): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    GPIO_PORTF_IBE_REG &= ~(1<<0);
+                       ~~ ^~~~~~~
+main.c(114): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    GPIO_PORTF_IEV_REG &= ~(1<<0);
+                       ~~ ^~~~~~~
+main.c(132): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    GPIO_PORTF_AFSEL_REG &= ~(1<<1);                      /*For PF0*/
+                         ~~ ^~~~~~~
+main.c(133): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    GPIO_PORTF_AFSEL_REG &= ~(1<<2);
+                         ~~ ^~~~~~~
+main.c(134): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    GPIO_PORTF_AFSEL_REG &= ~(1<<3);
+                         ~~ ^~~~~~~
+main.c(136): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    GPIO_PORTF_AMSEL_REG &= ~(1<<1);
+                         ~~ ^~~~~~~
+main.c(137): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    GPIO_PORTF_AMSEL_REG &= ~(1<<2);
+                         ~~ ^~~~~~~
+main.c(138): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    GPIO_PORTF_AMSEL_REG &= ~(1<<3);
+                         ~~ ^~~~~~~
+main.c(184): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+main.c(182): warning: 'return' will never be executed [-Wunreachable-code-return]
+        return 0;
+               ^
+24 warnings generated.
+compiling main.c...
+linking...
+Program Size: Code=1536 RO-data=636 RW-data=0 ZI-data=608  
+".\Objects\Src.axf" - 0 Error(s), 24 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS.6.0.0.pack
+                ARM.CMSIS.6.0.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 6.0.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.TM4C_DFP.1.1.0.pack
+                Keil.TM4C_DFP.1.1.0
+                Texas Instruments Tiva C Series Device Support and Examples
+   * Component: Startup Version: 1.0.1
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_Target_1
+  C:/Users/omar/AppData/Local/Arm/Packs/ARM/CMSIS/6.0.0/CMSIS/Core/Include
+  C:/Users/omar/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:6.0.0
+
+   * Component: Keil::Device:Startup:1.0.1
+      Include file:  Device/Include/TM4C123/TM4C123.h
+      Source file:   Device/Source/ARM/startup_TM4C123.s
+      Source file:   Device/Source/system_TM4C123.c
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
