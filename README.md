@@ -5,16 +5,26 @@ Welcome to the Tiva C repository! This repository contains code and resources re
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Tiva c](#Tiva c)
+2. [Autosardriver](#Autosardriver)
 3. [Projects](#projects)
 
 ## Introduction
 
-The Tiva C series microcontrollers, developed by Texas Instruments, are widely used in various embedded systems applications due to their performance, versatility, and rich peripheral set. This repository provides resources, projects, and tutorials tailored to Tiva C microcontrollers.
+Welcome to the Arm_Based repository! This collection of projects is tailored for enthusiasts and professionals in the automotive embedded software field. 
 
-## Tiva c
+The projects featured here are designed for Tiva-C and STM32 microcontrollers, offering a hands-on approach to learning and implementing embedded software solutions in the automotive industry. Whether you're a beginner looking to explore the basics or an experienced engineer seeking to expand your skill set, these projects aim to provide valuable insights and practical experience in automotive embedded software development.
 
-This repository includes a folder named "Tiva C" containing drivers for each peripheral and application in projects. All codes are fully commented, making it easier to understand and use them in your projects.
+Feel free to explore the projects and contribute to this growing community of automotive embedded software engineers!
+
+## Autosardriver
+
+Welcome to the Automotive Embedded Software Engineer repository! This collection of projects is tailored for enthusiasts and professionals in the automotive embedded software field.
+
+The repository includes projects for Tiva-C and STM32 microcontrollers, offering a hands-on approach to learning and implementing embedded software solutions in the automotive industry. Additionally, the Autosar section features drivers and projects that adhere to the Autosar standards, providing a comprehensive understanding of software development in the automotive domain.
+
+Whether you're a beginner looking to explore the basics or an experienced engineer seeking to expand your skill set, these projects aim to provide valuable insights and practical experience in automotive embedded software development.
+
+Feel free to explore the projects and contribute to this growing community of automotive embedded software engineers!
 
 ## Projects
 
